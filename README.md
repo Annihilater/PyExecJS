@@ -2,7 +2,9 @@ PyExecJS (EOL)
 ==============
 [![Build Status](https://travis-ci.org/doloopwhile/PyExecJS.svg?branch=travis-ci)](https://travis-ci.org/doloopwhile/PyExecJS)
 
-> 修改说明：execjs._external_runtime.ExternalRuntime.Context#_exec_with_pipe 中实例化 Popen 对象的时候，指定编码方式 encoding=’utf-8‘ ，因为在 python3.6 中调用 execjs 处理中文文本的时候总是会报 UnicodeDecodeError: 'ascii' codec can't decode byte 0xe5 in position 12: ordinal not in range(128)。查找后发现原来不指定编码方式的话会默认使用 'ANSI_X3.4-1968' 的编码方式。
+> 修改说明：
+>
+> `execjs._external_runtime.ExternalRuntime.Context#_exec_with_pipe` 中实例化 `Popen` 对象的时候，指定编码方式 `encoding='utf-8'` ，因为在 python3.6 中调用 `execjs` 处理中文文本的时候总是会报 `UnicodeDecodeError: 'ascii' codec can't decode byte 0xe5 in position 12: ordinal not in range(128)`。查找后发现原来不指定编码方式的话会默认使用 `ANSI_X3.4-1968` 的编码方式。
 
 
 # End of life
