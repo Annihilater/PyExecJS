@@ -24,6 +24,7 @@ from execjs._misc import encode_unicode_codepoints
 
 class ExternalRuntime(AbstractRuntime):
     '''Runtime to execute codes with external command.'''
+
     def __init__(self, name, command, runner_source, encoding='utf8', tempfile=False):
         self._name = name
         if isinstance(command, str):
@@ -96,7 +97,8 @@ class ExternalRuntime(AbstractRuntime):
 
             p = None
             try:
-                p = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, cwd=self._cwd, universal_newlines=True)
+                p = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, cwd=self._cwd, universal_newlines=True,
+                          encoding='utf-8')
                 input = self._compile(source)
                 if six.PY2:
                     input = input.encode(sys.getfilesystemencoding())
